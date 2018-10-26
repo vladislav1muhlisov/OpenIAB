@@ -20,7 +20,6 @@ apply from: 'https://raw.githubusercontent.com/onepf/OPF-mvn-repo/master/OPF-mvn
 
 android {
     compileSdkVersion project.compileSdkVersion
-    buildToolsVersion project.buildToolsVersion
 
     defaultConfig {
         minSdkVersion project.minSdkVersion
@@ -32,6 +31,7 @@ android {
     lintOptions {
         abortOnError false
     }
+    buildToolsVersion '27.0.3'
 }
 
 //robolectric {
@@ -47,11 +47,10 @@ android {
 //}
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    compile fileTree(include: '*.jar', dir: 'libs')
     compile 'com.intellij:annotations:12.0'
     provided 'com.amazon:in-app-purchasing:2.0.61'
     provided 'com.braintree:fortumo-in-app:9.1.2'
-
     androidTestCompile 'org.robolectric:robolectric:2.3'
     androidTestCompile 'junit:junit:4.11'
 }

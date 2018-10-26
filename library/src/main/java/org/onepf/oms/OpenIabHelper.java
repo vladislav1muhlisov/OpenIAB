@@ -1032,14 +1032,18 @@ public class OpenIabHelper {
                     Logger.d("onServiceDisconnected(): ", name);
                 }
             };
-
-            if (context.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)) {
-                // Wait for open store service
-                return;
-            } else {
-                // TODO It seems serviceConnection still might be called in this point hopefully this will help
-                context.unbindService(serviceConnection);
-                Logger.e("discoverOpenStores() Couldn't connect to open store: " + intent);
+            try {
+                if (context.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)) {
+                    // Wait for open store service
+                    return;
+                } else {
+                    // TODO It seems serviceConnection still might be called in this point hopefully this will help
+                    context.unbindService(serviceConnection);
+                    Logger.e("discoverOpenStores() Couldn't connect to open store: " + intent);
+                }
+            } catch (SecurityException e) {
+                Logger.e("SecurityException: Can not get access to open store: " + intent);
+            } catch (Throwable t){
             }
         }
 

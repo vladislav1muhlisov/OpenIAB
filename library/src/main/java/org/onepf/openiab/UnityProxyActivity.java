@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
+import org.onepf.oms.OpenIabHelper;
 import org.onepf.oms.appstore.googleUtils.IabHelper;
 import org.onepf.oms.appstore.googleUtils.IabResult;
 
@@ -80,7 +81,8 @@ public class UnityProxyActivity extends Activity {
         Log.d(UnityPlugin.TAG, "onActivityResult(" + requestCode + ", " + resultCode + ", " + data);
 
         // Pass on the activity result to the helper for handling
-        if (!UnityPlugin.instance().getHelper().handleActivityResult(requestCode, resultCode, data)) {
+        OpenIabHelper helper = UnityPlugin.instance().getHelper();
+        if (helper != null && helper.handleActivityResult(requestCode, resultCode, data)) {
             // not handled, so handle it ourselves (here's where you'd
             // perform any handling of activity results not related to in-app
             // billing...

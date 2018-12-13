@@ -85,3 +85,5 @@ pip-log.txt
 #Gradle
 .gradletasknamecache
 .gradle/
+
+/library/release/

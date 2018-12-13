@@ -54,3 +54,15 @@ dependencies {
     androidTestCompile 'org.robolectric:robolectric:2.3'
     androidTestCompile 'junit:junit:4.11'
 }
+
+task deleteOldJar(type: Delete) {
+    delete 'release/OpenIAB-plugin.jar'
+}
+
+task exportJar(type: Copy) {
+    from('build/intermediates/intermediate-jars/release')
+    into('release/')
+    rename('classes.jar', 'OpenIAB-plugin.jar')
+}
+
+exportJar.dependsOn(deleteOldJar, build)

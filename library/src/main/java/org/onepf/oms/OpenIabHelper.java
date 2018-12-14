@@ -32,6 +32,7 @@ import android.os.Looper;
 import android.os.RemoteException;
 import android.text.TextUtils;
 
+import com.geargames.aow.logger.NativeLogger;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -1039,10 +1040,10 @@ public class OpenIabHelper {
                 } else {
                     // TODO It seems serviceConnection still might be called in this point hopefully this will help
                     context.unbindService(serviceConnection);
-                    Logger.e("discoverOpenStores() Couldn't connect to open store: " + intent);
+                    NativeLogger.Error("discoverOpenStores(): Couldn't connect to open store: " + intent);
                 }
             } catch (SecurityException e) {
-                Logger.e("SecurityException: Can not get access to open store: " + intent);
+                NativeLogger.Error("discoverOpenStores(): SecurityException: " + e.getMessage());
             }
         }
 

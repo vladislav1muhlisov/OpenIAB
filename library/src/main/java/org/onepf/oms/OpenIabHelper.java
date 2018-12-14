@@ -1043,7 +1043,6 @@ public class OpenIabHelper {
                 }
             } catch (SecurityException e) {
                 Logger.e("SecurityException: Can not get access to open store: " + intent);
-            } catch (Throwable t){
             }
         }
 

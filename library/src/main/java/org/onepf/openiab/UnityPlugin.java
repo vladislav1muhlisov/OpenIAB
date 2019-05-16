@@ -102,6 +102,7 @@ public class UnityPlugin {
         UnityPlayer.currentActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                SkuManager.getInstance().ClearSkuMaps();
                 _helper = new OpenIabHelper(UnityPlayer.currentActivity, options);
                 createBroadcasts();
 

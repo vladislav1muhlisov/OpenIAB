@@ -213,6 +213,11 @@ public class SkuManager {
                 Collections.unmodifiableList(new ArrayList<String>(skuMap.values()));
     }
 
+    public void ClearSkuMaps() {
+        sku2storeSkuMappings.clear();
+        storeSku2skuMappings.clear();
+    }
+
     /**
      * @return the current instance of {@link org.onepf.oms.SkuManager}.
      */

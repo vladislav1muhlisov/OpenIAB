@@ -74,6 +74,7 @@ public class UnityProxyActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(broadcastReceiver);
+        UnityPlugin.instance().getPurchaseFinishedListener().onIabPurchaseFinished(new IabResult(IabHelper.IABHELPER_USER_CANCELLED, "Billing activity has been destroyed. User probably pressed home button"), null);
     }
     
     @Override
